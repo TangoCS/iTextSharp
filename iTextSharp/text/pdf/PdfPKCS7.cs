@@ -154,8 +154,9 @@ namespace iTextSharp.text.pdf {
             digestNames["1.3.36.3.3.1.3"] = "RIPEMD128";
             digestNames["1.3.36.3.3.1.2"] = "RIPEMD160";
             digestNames["1.3.36.3.3.1.4"] = "RIPEMD256";
-            
-            algorithmNames["1.2.840.113549.1.1.1"] = "RSA";
+			digestNames["1.2.643.2.2.9"] = "GOST3411";
+
+			algorithmNames["1.2.840.113549.1.1.1"] = "RSA";
             algorithmNames["1.2.840.10040.4.1"] = "DSA";
             algorithmNames["1.2.840.113549.1.1.2"] = "RSA";
             algorithmNames["1.2.840.113549.1.1.4"] = "RSA";
@@ -170,8 +171,9 @@ namespace iTextSharp.text.pdf {
             algorithmNames["1.3.36.3.3.1.3"] = "RSA";
             algorithmNames["1.3.36.3.3.1.2"] = "RSA";
             algorithmNames["1.3.36.3.3.1.4"] = "RSA";
-            
-            allowedDigests["MD5"] = "1.2.840.113549.2.5";
+			algorithmNames["1.2.643.2.2.19"] = "ECGOST3410";
+
+			allowedDigests["MD5"] = "1.2.840.113549.2.5";
             allowedDigests["MD2"] = "1.2.840.113549.2.2";
             allowedDigests["SHA1"] = "1.3.14.3.2.26";
             allowedDigests["SHA224"] = "2.16.840.1.101.3.4.2.4";
@@ -191,15 +193,16 @@ namespace iTextSharp.text.pdf {
             allowedDigests["RIPEMD-160"] = "1.3.36.3.2.1";
             allowedDigests["RIPEMD256"] = "1.3.36.3.2.3";
             allowedDigests["RIPEMD-256"] = "1.3.36.3.2.3";
-        }
-        
-        /**
+			allowedDigests["GOST3411"] = "1.2.643.2.2.9";
+		}
+
+		/**
         * Gets the digest name for a certain id
         * @param oid    an id (for instance "1.2.840.113549.2.5")
         * @return   a digest name (for instance "MD5")
         * @since    2.1.6
         */
-        public static String GetDigest(String oid) {
+		public static String GetDigest(String oid) {
             String ret = (String)digestNames[oid];
             if (ret == null)
                 return oid;
