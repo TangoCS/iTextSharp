@@ -1486,7 +1486,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="extern\bc-csharp\crypto\crypto.csproj">
-      <Project>{9de17e64-68ae-4e6e-9cd8-00657634352d}</Project>
+      <Project>{38872a5f-e87e-4fad-b109-8eb7b2e6a4a0}</Project>
       <Name>crypto</Name>
     </ProjectReference>
   </ItemGroup>
