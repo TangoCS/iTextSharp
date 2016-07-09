@@ -301,8 +301,19 @@ namespace iTextSharp.text.pdf {
                 fileID = crypto.FileID;
             }
             else
-                fileID = PdfEncryption.CreateInfoId(PdfEncryption.CreateDocumentId());
-            PRIndirectReference iRoot = (PRIndirectReference)reader.trailer.Get(PdfName.ROOT);
+			{
+				PdfArray idarray = (PdfArray)reader.trailer.Get(PdfName.ID);
+				if (idarray.ArrayList.Count == 2)
+				{
+					var oid1 = idarray.GetAsString(0);
+					var oid2 = idarray.GetAsString(1);
+
+					fileID = PdfEncryption.CreateInfoId(oid1.GetBytes(), oid2.GetBytes());
+				}
+				else
+					fileID = PdfEncryption.CreateInfoId(PdfEncryption.CreateDocumentId());
+			}
+			PRIndirectReference iRoot = (PRIndirectReference)reader.trailer.Get(PdfName.ROOT);
             PdfIndirectReference root = new PdfIndirectReference(0, GetNewObjectNumber(reader, iRoot.Number, 0));
             PdfIndirectReference info = null;
             PdfDictionary newInfo = new PdfDictionary();
@@ -322,7 +333,7 @@ namespace iTextSharp.text.pdf {
                         newInfo.Put(keyName, new PdfString(value, PdfObject.TEXT_UNICODE));
                 }
             }
-            newInfo.Put(PdfName.MODDATE, date);
+            //newInfo.Put(PdfName.MODDATE, date);
             newInfo.Put(PdfName.PRODUCER, new PdfString(producer));
             if (append) {
                 if (iInfo == null)

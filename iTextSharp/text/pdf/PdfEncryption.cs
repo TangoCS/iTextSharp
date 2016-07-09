@@ -370,6 +370,19 @@ public class PdfEncryption {
         return new PdfLiteral(buf.ToByteArray());
     }
 
+    public static PdfObject CreateInfoId(byte[] id1, byte[] id2) {
+        ByteBuffer buf = new ByteBuffer(90);
+        buf.Append('[').Append('<');
+        for (int k = 0; k < 16; ++k)
+            buf.AppendHex(id1[k]);
+        buf.Append('>').Append('<');
+        
+        for (int k = 0; k < 16; ++k)
+            buf.AppendHex(id2[k]);
+        buf.Append('>').Append(']');
+        return new PdfLiteral(buf.ToString().ToUpper());
+    }
+
     public PdfDictionary GetEncryptionDictionary() {
         PdfDictionary dic = new PdfDictionary();
         
