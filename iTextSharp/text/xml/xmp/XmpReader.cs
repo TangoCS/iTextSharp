@@ -96,9 +96,17 @@ namespace iTextSharp.text.xml.xmp {
 			    SetNodeText(domDocument, node, value);
 		    }
 		    return true;
-	    }    
-    	
-	    /**
+	    }
+
+		public bool IsAdd(String namespaceURI, String localName)
+		{
+			XmlNodeList nodes = domDocument.GetElementsByTagName(localName, namespaceURI);
+			if (nodes.Count == 0)
+				return true;
+			return false;
+		}
+
+		/**
 	    * Adds a tag.
 	    * @param	namespaceURI	the URI of the namespace
 	    * @param	parent			the tag name of the parent
@@ -107,7 +115,7 @@ namespace iTextSharp.text.xml.xmp {
 	    * @return	true if the content was successfully added
 	    * @since	2.1.6
 	    */
-	    public bool Add(String parent, String namespaceURI, String localName, String value) {
+		public bool Add(String parent, String namespaceURI, String localName, String value) {
 		    XmlNodeList nodes = domDocument.GetElementsByTagName(parent);
 		    if (nodes.Count == 0)
 			    return false;
