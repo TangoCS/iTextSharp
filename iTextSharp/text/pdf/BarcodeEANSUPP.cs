@@ -143,7 +143,7 @@ namespace iTextSharp.text.pdf {
             return this.BarcodeSize;
         }
 
-        public override System.Drawing.Image CreateDrawingImage(System.Drawing.Color foreground, System.Drawing.Color background) {
+        public override iTextSharp.Drawing.Image CreateDrawingImage(iTextSharp.Drawing.Color foreground, iTextSharp.Drawing.Color background) {
             throw new InvalidOperationException("The two barcodes must be composed externally.");
         }
     }

@@ -843,11 +843,11 @@ namespace iTextSharp.text.pdf {
             return Image.GetInstance(bitColumns, codeRows, false, Element.CCITTG4, (options & PDF417_INVERT_BITMAP) == 0 ? 0 : Element.CCITT_BLACKIS1, g4, null);
         }
 
-        public virtual System.Drawing.Image CreateDrawingImage(System.Drawing.Color foreground, System.Drawing.Color background) {
+        public virtual iTextSharp.Drawing.Image CreateDrawingImage(iTextSharp.Drawing.Color foreground, iTextSharp.Drawing.Color background) {
             PaintCode();
             int h = (int)yHeight;
             int stride = (bitColumns + 7) / 8;
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(bitColumns, codeRows * h);
+            iTextSharp.Drawing.Bitmap bmp = new iTextSharp.Drawing.Bitmap(bitColumns, codeRows * h);
             int y = 0;
             for (int k = 0; k < codeRows; ++k) {
                 for (int hh = 0; hh < h; ++hh) {

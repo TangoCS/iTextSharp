@@ -670,7 +670,7 @@ namespace iTextSharp.text.pdf {
             return this.BarcodeSize;
         }    
 
-        public override System.Drawing.Image CreateDrawingImage(System.Drawing.Color foreground, System.Drawing.Color background) {
+        public override iTextSharp.Drawing.Image CreateDrawingImage(iTextSharp.Drawing.Color foreground, iTextSharp.Drawing.Color background) {
             String bCode;
             if (codeType == CODE128_RAW) {
                 int idx = code.IndexOf('\uffff');
@@ -686,13 +686,13 @@ namespace iTextSharp.text.pdf {
             int fullWidth = (len + 2) * 11 + 2;
             byte[] bars = GetBarsCode128Raw(bCode);
             int height = (int)barHeight;
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(fullWidth, height);
+            iTextSharp.Drawing.Bitmap bmp = new iTextSharp.Drawing.Bitmap(fullWidth, height);
             for (int h = 0; h < height; ++h) {
                 bool print = true;
                 int ptr = 0;
                 for (int k = 0; k < bars.Length; ++k) {
                     int w = bars[k];
-                    System.Drawing.Color c = background;
+                    iTextSharp.Drawing.Color c = background;
                     if (print)
                         c = foreground;
                     print = !print;

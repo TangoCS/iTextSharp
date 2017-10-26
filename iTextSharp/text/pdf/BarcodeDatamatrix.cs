@@ -760,13 +760,13 @@ namespace iTextSharp.text.pdf {
         * @param background the color of the background
         * @return the image
         */    
-        public virtual System.Drawing.Image CreateDrawingImage(System.Drawing.Color foreground, System.Drawing.Color background) {
+        public virtual iTextSharp.Drawing.Image CreateDrawingImage(iTextSharp.Drawing.Color foreground, iTextSharp.Drawing.Color background) {
             if (image == null)
                 return null;
             int h = height + 2 * ws;
             int w = width + 2 * ws;
             int stride = (w + 7) / 8;
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(w, h);
+            iTextSharp.Drawing.Bitmap bmp = new iTextSharp.Drawing.Bitmap(w, h);
             for (int k = 0; k < h; ++k) {
                 int p = k * stride;
                 for (int j = 0; j < w; ++j) {

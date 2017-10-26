@@ -173,7 +173,7 @@ namespace iTextSharp.text.pdf {
             return this.BarcodeSize;
         }
     
-        public override System.Drawing.Image CreateDrawingImage(System.Drawing.Color foreground, System.Drawing.Color background) {
+        public override iTextSharp.Drawing.Image CreateDrawingImage(iTextSharp.Drawing.Color foreground, iTextSharp.Drawing.Color background) {
             int barWidth = (int)x;
             if (barWidth <= 0)
                 barWidth = 1;
@@ -194,7 +194,7 @@ namespace iTextSharp.text.pdf {
                 bars[0] = 0;
                 bars[bars.Length - 1] = 0;
             }
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(width, barTall);
+            iTextSharp.Drawing.Bitmap bmp = new iTextSharp.Drawing.Bitmap(width, barTall);
             int seg1 = barTall - barShort;
             for (int i = 0; i < seg1; ++i) {
                 int idx = 0;
