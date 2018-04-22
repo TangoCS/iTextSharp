@@ -355,7 +355,7 @@ namespace iTextSharp.text.rtf.table {
             
             
             // does it have column composite info?
-            ArrayList compositeElements = cell.CompositeElements;
+            var compositeElements = cell.CompositeElements;
             if (compositeElements != null) {
                 // does it have column info?
                 Paragraph container = null;
