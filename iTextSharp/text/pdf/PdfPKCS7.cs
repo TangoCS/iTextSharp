@@ -155,8 +155,8 @@ namespace iTextSharp.text.pdf {
             digestNames["1.3.36.3.3.1.2"] = "RIPEMD160";
             digestNames["1.3.36.3.3.1.4"] = "RIPEMD256";
 			digestNames["1.2.643.2.2.9"] = "GOST3411";
-            digestNames["1.2.643.7.1.1.2.2"] = "GOST3411_2012_256";
-            digestNames["1.2.643.7.1.1.2.3"] = "GOST3411_2012_256";
+            digestNames["1.2.643.7.1.1.2.2"] = "GOST3411-2012-256";
+            digestNames["1.2.643.7.1.1.2.3"] = "GOST3411-2012-512";
 
             algorithmNames["1.2.840.113549.1.1.1"] = "RSA";
             algorithmNames["1.2.840.10040.4.1"] = "DSA";
@@ -198,8 +198,8 @@ namespace iTextSharp.text.pdf {
             allowedDigests["RIPEMD256"] = "1.3.36.3.2.3";
             allowedDigests["RIPEMD-256"] = "1.3.36.3.2.3";
 			allowedDigests["GOST3411"] = "1.2.643.2.2.9";
-            allowedDigests["GOST3411_2012_256"] = "1.2.643.7.1.1.2.2";
-            allowedDigests["GOST3411_2012_512"] = "1.2.643.7.1.1.2.3";
+            allowedDigests["GOST3411-2012-256"] = "1.2.643.7.1.1.2.2";
+            allowedDigests["GOST3411-2012-512"] = "1.2.643.7.1.1.2.3";
         }
 
         /**
