@@ -2,7 +2,7 @@
 #######################
 bin/
 obj/
-
+.vs/
 # ide user or temp files #
 #############
 *.userprefs
