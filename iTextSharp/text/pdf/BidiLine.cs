@@ -68,7 +68,7 @@ namespace iTextSharp.text.pdf {
         protected byte[] orderLevels = new byte[pieceSizeStart];
         protected int[] indexChars = new int[pieceSizeStart];
     
-        protected ArrayList chunks = new ArrayList();
+        protected internal ArrayList chunks = new ArrayList();
         protected int indexChunk = 0;
         protected int indexChunkChar = 0;
         protected int currentChar = 0;

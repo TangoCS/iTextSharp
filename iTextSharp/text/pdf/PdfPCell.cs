@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using iTextSharp.text;
 using iTextSharp.text.pdf.events;
 
@@ -102,7 +102,7 @@ namespace iTextSharp.text.pdf {
         private IPdfPCellEvent cellEvent;
 
         /** Holds value of property useDescender. */
-        private bool useDescender;
+        private bool useDescender = false;
 
         /** Increases padding to include border if true */
         private bool useBorderPadding = false;
@@ -152,14 +152,13 @@ namespace iTextSharp.text.pdf {
         public PdfPCell(Image image, bool fit) : base(0, 0, 0, 0) {
             borderWidth = 0.5f;
             border = BOX;
+            column.SetLeading(0, 1);
             if (fit) {
                 this.image = image;
-                column.SetLeading(0, 1);
                 Padding = borderWidth / 2;
             }
             else {
-                column.AddText(this.phrase = new Phrase(new Chunk(image, 0, 0)));
-                column.SetLeading(0, 1);
+                column.AddText(this.phrase = new Phrase(new Chunk(image, 0, 0, true)));
                 Padding = 0;
             }
         }
@@ -722,7 +721,7 @@ namespace iTextSharp.text.pdf {
         * @return   a List object.
         * @since    2.1.1
         */
-        public ArrayList CompositeElements {
+        public List<IElement> CompositeElements {
             get {
                 return column.compositeElements;
             }
@@ -739,33 +738,11 @@ namespace iTextSharp.text.pdf {
                 if (rot < 0)
                     rot += 360;
                 if ((rot % 90) != 0)
-                    throw new ArgumentException("Rotation must be a multiple of 90.");
+                    throw new ArgumentException("Rotation must be a multiple of 90");
                 rotation = rot;
             }
             get {
                 return rotation;
-            }
-        }
-
-        /**
-        * Consumes part of the content of the cell.
-        * @param   height  the hight of the part that has to be consumed
-        * @since   2.1.6
-        */
-        internal void ConsumeHeight(float height) {
-            float rightLimit = Right - EffectivePaddingRight;
-            float leftLimit = Left + EffectivePaddingLeft;
-            float bry = height - EffectivePaddingTop - EffectivePaddingBottom;
-            if (Rotation != 90 && Rotation != 270) {
-                column.SetSimpleColumn(leftLimit, bry + 0.001f, rightLimit, 0);
-            }
-            else {
-                column.SetSimpleColumn(0, leftLimit, bry + 0.001f, rightLimit);
-            }
-            try {
-                column.Go(true);
-            } catch (DocumentException) {
-                // do nothing
             }
         }
 
@@ -817,9 +794,9 @@ namespace iTextSharp.text.pdf {
                 }
             }
             float height = Height;
-            if (height < FixedHeight)
+            if (HasFixedHeight())
                 height = FixedHeight;
-            else if (height < MinimumHeight)
+            else if (HasMinimumHeight() && height < MinimumHeight)
                 height = MinimumHeight;
             return height;
         }
